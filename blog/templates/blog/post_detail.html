@@ -1,0 +1,29 @@
+```html
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <article>
+        <h1>{{ post.title }}</h1>
+
+        <p>
+            <small>
+                Published: {{ post.created_at }}
+            </small>
+        </p>
+
+        <p>
+            Author: {{ post.author }}
+        </p>
+
+        <p>
+            Category: {{ post.category }}
+        </p>
+
+        <div>
+            {{ post.content|linebreaksbr }}
+        </div>
+    </article>
+
+{% endblock %}
+```
