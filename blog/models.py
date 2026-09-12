@@ -1,8 +1,8 @@
-from django.db import models
-
+import math
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -15,6 +15,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
@@ -30,6 +31,12 @@ class Post(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    @property
+    def reading_time(self):
+        words = len(self.content.split())
+        minutes = math.ceil(words / 200)
+        return minutes if minutes > 0 else 1
 
     def __str__(self):
         return self.title

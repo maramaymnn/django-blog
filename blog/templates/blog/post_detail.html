@@ -1,4 +1,3 @@
-```html
 {% extends 'blog/base.html' %}
 
 {% block content %}
@@ -17,6 +16,10 @@
         </p>
 
         <p>
+            ⏱️ <strong>Reading Time:</strong> {{ post.reading_time }} min read
+        </p>
+
+        <p>
             Category: {{ post.category }}
         </p>
 
@@ -26,4 +29,3 @@
     </article>
 
 {% endblock %}
-```
